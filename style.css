@@ -1,0 +1,210 @@
+#background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30%; /* Adjust width as needed */
+    height: 100%; /* Full height */
+    color: #fff; /* Text color */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+
+@font-face{
+    font-family: 'Heavitas';
+    src: url('fonts/Heavitas.woff2') format('woff2'),
+         url('fonts/Heavitas.woff') format('woff'),
+         url('fonts/Heavitas.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#album-title {
+    font-size: 5rem;
+    margin-bottom: 10px;
+    font-family: 'Heavitas', sans-serif;
+    margin-left: 30%;
+    color: #e38928;
+}
+
+#artist-song-info {
+    font-size: 1rem;
+    text-align: center;
+    font-family: 'Heavitas', sans-serif;
+    margin-left: 30%;
+    color: #e38928;
+}
+
+body {
+
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Ensure full viewport height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    background: #252828;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    #background {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px;
+        background-size: cover;
+    }
+
+    #album-title,
+    #artist-song-info {
+        margin-left: 0;
+        text-align: left;
+        width: 100%; /* Ensure they take the full width of their container */
+        padding: 0 10px; /* Add some padding for better spacing */
+    }
+
+    #album-title {
+        font-size: 2rem; /* Adjust font size for smaller screens */
+        margin-bottom: 5px; /* Reduce bottom margin */
+    }
+
+    #artist-song-info {
+        font-size: 1rem; /* Keep font size but ensure text alignment */
+    }
+
+    #container {
+        width: 100%;
+        padding: 20px;
+    }
+
+    #drag-container,
+    #spin-container {
+        transform: rotateX(0deg) scale(0.8); /* Adjust rotation and scale for mobile */
+    }
+
+    #drag-container img,
+    #drag-container video {
+        margin-top: 100%; /* Reduce margin for smaller screens */
+        width: 100%; /* Adjust width to fit better on smaller screens */
+    }
+
+    #drag-container p {
+        font-size: 2rem; /* Reduce font size for smaller screens */
+        top: 150%; /* Adjust position for smaller screens */
+    }
+
+    #ground {
+        width: 100%; /* Make ground container responsive */
+        height: 100%; /* Make ground container responsive */
+        top: auto; /* Adjust top position for smaller screens */
+    }
+}
+
+
+/* CSS styles for the carousel */
+#container {
+    display: flex;
+    flex-direction: column; /* Align content vertically */
+    align-items: center; /* Center horizontally */
+}
+
+#drag-container,
+#spin-container {
+    position: relative;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin: auto;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) scale(1);
+}
+
+#drag-container img,
+#drag-container video {
+    margin-top: 300%; /* Adjust this if needed, depending on your layout */
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 300%; /* Reduce the width to make the images/videos smaller */
+    height: 200%; /* Set the height to a specific value or percentage */
+    object-fit: cover; /* This will crop the images/videos to fit the container */
+    overflow: hidden; /* Ensure that the content that overflows is hidden */
+    text-align: center;
+    box-shadow: 0 0 8px #f8f7f7;
+    -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0005);
+}
+
+#drag-container img:hover,
+#drag-container video:hover {
+    box-shadow: 0 0 15px rgba(243, 242, 242, 0.867);
+    -webkit-box-reflect: below 10px linear-gradient(transparent, transparent, #0007);
+}
+
+@font-face {
+    font-family: 'All Rights Reserved';
+    src: url('fonts/AllRightsReserved.ttf') format('truetype');
+}
+
+#drag-container p {
+    font-size: 1rem;
+    font-family: 'All Rights Reserved', sans-serif;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(90deg);
+    color: #050202;
+}
+
+#ground {
+    width: 900px;
+    height: 900px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotateX(90deg);
+    background: radial-gradient(c);
+}
+
+#music-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@keyframes spin {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes spinRevert {
+    from {
+        transform: rotateY(360deg);
+    }
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+#drag-container {
+    margin-bottom: 400px; /* Add some space between the carousel and the audio player */
+}
+
+
+
